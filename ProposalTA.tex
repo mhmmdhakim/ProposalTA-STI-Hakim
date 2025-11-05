@@ -161,7 +161,7 @@
 % -- No Header dan No Footer ---
 \pagestyle{plain}
 
-% --- Ubah nama daftar listing ke "DAFTAR ALGORITMA" ---
+% --- Ubah nama daftar listing ke "DAFTAR KODE" ---
 % --- Harus diletakkan sebelum \begin{document} ---
 \renewcommand{\lstlistlistingname}{\centering\normalsize DAFTAR KODE} 
 \renewcommand{\lstlistingname}{Kode}
@@ -170,6 +170,12 @@
 
 
 \renewcommand \cftchapdotsep{4.5}
+%\cftsetrmarg{4em}  % Ini diset agar judul subbab tidak mepet ke nomor halaman di daftar isi
+% -- Atur indentasi judul bab, subbab, dan subsubbab di daftar isi ---
+\setlength{\cftchapindent}{0em}
+\setlength{\cftsecindent}{0em}
+\setlength{\cftsubsecindent}{0em}
+\setlength{\cftsubsubsecindent}{0em}
 
 % ==========================================
 % AWAL DOKUMEN

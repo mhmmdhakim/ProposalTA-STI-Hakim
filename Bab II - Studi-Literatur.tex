@@ -103,19 +103,28 @@ Random Forest unggul dalam menangani data non-linear dan mampu mengurangi \texti
 % \label{tbl:harga1}
 % \end{table}
 
-% \begin{table}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
-% 	\begin{tabular}{ | l | c | r | }
-% 	\hline
-% 	Nama 	& Satuan 		& Harga \\
-% 	\hline
-% 	Buku 	& Exemplar	& 25000 \\
-% 	Komputer	& Unit		& 2500000 \\
-% 	Pensil	& Buah		& 118900 \\
-% 	\hline
-% 	\end{tabular}
-% \caption{Tabel harga bahan sekunder}
-% \label{tbl:harga2}
-% \end{table}
+\begin{table}[t] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
+	\begin{tabular}{ | l | c | r | }
+	\hline
+	Nama 	& Satuan 		& Harga \\
+	\hline
+	Buku 	& Exemplar	& 25000 \\
+	Komputer	& Unit		& 2500000 \\
+	Pensil	& Buah		& 118900 \\
+	\hline
+	\end{tabular}
+\caption{Tabel harga bahan sekunder}
+\label{tbl:harga2}
+\end{table}
+
+% -- Example of importing table from external file --
+\subsubsection{Mengimpor Tabel dari Berkas Eksternal}
+
+Tabel \ref{tbl:harga3} diimpor dari berkas eksternal \textit{table/tabel1.tex} menggunakan perintah \textit{input}. 
+Dengan demikian, jika tabel tersebut perlu diubah, cukup mengubah pada berkas eksternal tersebut tanpa perlu mengubah pada berkas utama ini.
+
+\input table/tabel1.tex
+
 
 % \subsubsection{Tabel yang Sangat Panjang}
 % Jika tabel terlalu panjang sehingga tidak muat dalam satu halaman, gunakan paket 
