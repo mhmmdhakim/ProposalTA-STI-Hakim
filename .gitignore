@@ -1,0 +1,44 @@
+# ============================================
+# Git Ignore untuk Proyek LaTeX (Proposal TA)
+# ============================================
+
+# --- File build sementara LaTeX ---
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.lof
+*.log
+*.lol
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.toc
+
+# --- PDF hasil kompilasi ---
+*.pdf
+
+# --- File output sementara dari editor ---
+*.tmp
+*.bak
+*.swp
+*~
+
+# --- Folder khusus VS Code / LaTeX Workshop ---
+.vscode/
+*.code-workspace
+
+# --- Sistem operasi ---
+.DS_Store
+Thumbs.db
+
+# --- Backup / cache ---
+*.bak
+*.sav
+*.tmp
+*.old
+*.backup
+
