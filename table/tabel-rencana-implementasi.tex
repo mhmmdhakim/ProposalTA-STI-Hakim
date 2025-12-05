@@ -1,0 +1,63 @@
+
+\begin{longtable}{@{\extracolsep{\fill}} 
+    >{\raggedright\arraybackslash}p{2cm}
+    >{\raggedright\arraybackslash}p{2cm}
+    >{\raggedright\arraybackslash}p{5cm}
+    >{\raggedright\arraybackslash}p{3cm}}
+
+\caption{Rencana Implementasi}\label{tbl:rencana-implementasi} \\
+\toprule
+\textbf{Periode} & \textbf{Tahap} & \textbf{Deskripsi Kegiatan} & \textbf{Output} \\
+\midrule
+\endfirsthead
+
+\caption[]{Rencana Implementasi (lanjutan)}\\
+\toprule
+\textbf{Periode} & \textbf{Tahap} & \textbf{Deskripsi Kegiatan} & \textbf{Output} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{4}{r}{\textit{Bersambung ke halaman berikutnya}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+Minggu 1-2
+& Penyusunan \textit{Dataset}
+& Mengumpulkan berita berlabel hoaks/non-hoaks dan atribut sumber. Membersihkan data dari duplikasi, entri kosong, dan data tidak relevan. Menyusun \textit{dataset} terstruktur dalam format yang seragam.
+& \textit{Dataset} terstruktur berisi teks, label, dan \textit{domain}/kategori. \\
+\hline
+
+Minggu 3
+& \textit{Preprocessing} Teks
+& Membangun modul \textit{preprocessing} (\textit{case folding, cleaning, tokenisasi, stopword removal, stemming}). Melakukan uji coba \textit{preprocessing} pada sampel teks.
+& Teks hasil \textit{preprocessing} yang konsisten dan siap diekstraksi fiturnya. \\
+\hline
+
+Minggu 4
+& Ekstraksi Fitur
+& Membangun TF-IDF \textit{vectorizer} untuk teks. Menerapkan one-hot \textit{encoding} pada fitur sumber. Menyusun dua versi fitur: \textit{content-only} dan \textit{content+source}.
+& Matriks fitur final untuk skenario S1 dan S2. \\
+\hline
+
+Minggu 5-6
+& Pelatihan Model
+& Melatih Na\"\i ve Bayes, SVM, dan Random Forest pada kedua skenario fitur. Mencatat konfigurasi parameter model (baseline).
+& Enam model terlatih dari kombinasi algoritma dan skenario. \\
+\hline
+
+Minggu 7
+& Evaluasi Model
+& Menghitung confusion matrix, akurasi, precision, recall, dan F1-score untuk setiap model. Mengompilasi hasil evaluasi dalam tabel perbandingan performa.
+& Ringkasan evaluasi performa seluruh model. \\
+\hline
+
+Minggu 8
+& Penyimpanan Artefak
+& Menyimpan model terbaik beserta TF-IDF \textit{vectorizer} dan \textit{encoder} sumber. Menyimpan skrip implementasi dan \textit{notebook} eksperimen.
+& Artefak penelitian lengkap dan terdokumentasi. \\
+\hline
+
+\end{longtable}

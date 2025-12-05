@@ -1,0 +1,30 @@
+\begin{table}[h!]
+    \begin{tabular}{| p{3cm} | p{9cm} |}
+    \hline
+    \textbf{Kode} 
+    & \textbf{Deskripsi Kebutuhan} \\
+    \hline
+
+    \textbf{NFR1-Reproducibility}
+    & \textit{pipeline} dirancang sehingga eksperimen dapat diulang dengan hasil yang sama melalui pengaturan random seed, dokumentasi konfigurasi, dan struktur eksekusi yang deterministik. \\
+    \hline
+    
+    \textbf{NFR2-Efisiensi Komputasi} 
+    & \textit{pipeline} dapat dijalankan pada perangkat komputasi standar (CPU tanpa GPU) dengan waktu pemrosesan yang wajar, sehingga prosedur komparasi enam model tidak membebani sumber daya.\\
+
+    \hline
+    \textbf{NFR3-Skalabilitas Moderat} 
+    & \textit{pipeline} harus tetap stabil ketika jumlah data meningkat (misalnya dari 500 menjadi >1000 artikel), tanpa memerlukan perubahan arsitektural signifikan atau penurunan performa yang drastis. \\
+
+    \hline
+    \textbf{NFR4-Kemudahan Konfigurasi} 
+    & \textit{pipeline} harus memungkinkan pengaturan parameter dari model (misalnya jumlah pohon pada Random Forest) dan parameter fitur (misalnya n-gram batas TF-IDF) melalui modul konfigurasi yang mudah diubah. \\
+
+    \hline
+    \textbf{NFR5-Kemudahan Interpretasi Hasil} 
+    & \textit{pipeline} harus menghasilkan laporan evaluasi yang ringkas, terstruktur, dan mudah dipahami, sehingga hasil eksperimen dapat dijelaskan kepada pembimbing atau pihak lain dengan penjelasan tersebut. \\
+    \hline
+    \end{tabular}
+\caption{Kebutuhan Non-Fungsional dalam Implementasi \textit{pipeline}}
+\label{tbl:kebutuhan-non-fungsional}
+\end{table}

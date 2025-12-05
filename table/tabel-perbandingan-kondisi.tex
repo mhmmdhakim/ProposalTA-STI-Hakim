@@ -1,0 +1,43 @@
+\begin{table}[h!]
+\centering
+\begin{tabular}{| p{0.2\textwidth} | p{0.35\textwidth} | p{0.35\textwidth} |}
+\hline
+\textbf{Aspek} 
+& \textbf{Kondisi Saat Ini} 
+& \textbf{Konsep Solusi} \\
+\hline
+
+\textbf{Variasi penelitian} 
+& \textit{Dataset}, \textit{preprocessing}, dan konfigurasi berbeda sehingga hasil tidak dapat dibandingkan 
+& Pipeline seragam untuk melatih dan menguji NB, SVM, dan RF \\
+\hline
+
+\textbf{Jenis fitur} 
+& Hanya konten teks (TF-IDF) 
+& Kombinasi TF-IDF + metadata sumber \\
+\hline
+
+\textbf{Metode deteksi di lapangan} 
+& Manual, tidak skalabel 
+& Pemodelan ML sebagai \textit{benchmark} awal \\
+\hline
+
+\textbf{Evaluasi model} 
+& Tidak terstandarisasi 
+& \textit{Accuracy, precision, recall, dan F1-score} diterapkan dalam dua skenario \\
+\hline
+
+\textbf{Kontribusi ilmiah} 
+& Pengetahuan terpisah antar penelitian 
+& \textit{Benchmark} terukur + analisis pengaruh fitur tambahan \\
+\hline
+
+\textbf{Relevansi solusi} 
+& Tidak memberi rekomendasi algoritma terbaik 
+& Memberi rekomendasi berbasis data untuk konteks hoaks Indonesia \\
+\hline
+
+\end{tabular}
+\caption{Perbandingan kondisi saat ini dan konsep solusi yang diusulkan}
+\label{tbl:perbandingan-kondisi-solusi}
+\end{table}

@@ -1,0 +1,54 @@
+\begin{longtable}{| p{3cm} | p{9cm} |}
+\caption{Kebutuhan Fungsional dalam Implementasi \textit{pipeline}}
+\label{tbl:kebutuhan-fungsional} \\
+\hline
+\multicolumn{1}{|c|}{\textbf{Kode}} &
+\multicolumn{1}{c|}{\textbf{Deskripsi Kebutuhan}} \\
+\hline
+\endfirsthead
+
+\hline
+\multicolumn{1}{|c|}{\textbf{Kode}} &
+\multicolumn{1}{c|}{\textbf{Deskripsi Kebutuhan}} \\
+\hline
+\endhead
+
+\hline
+\multicolumn{2}{r}{\textit{Bersambung ke halaman berikutnya}} \\
+\endfoot
+
+\hline
+\endlastfoot
+
+    \textbf{FR1-Pengelolaan Dataset}
+    & \textit{pipeline} harus mampu memuat dan mengorganisasi dataset berita berbahasa Indonesia yang mencakup teks utama, label hoaks/non-hoaks, serta atribut sumber (domain atau jenis media), dan menyediakannya dalam struktur yang konsisten untuk seluruh proses eksperimen. \\
+
+    \hline
+    \textbf{FR2-Preprocessing Teks} 
+    & \textit{pipeline} harus menerapkan rangkaian preprocessing teks Bahasa Indonesia secara menyeluruh, termasuk normalisasi huruf, pembersihan karakter tidak relevan, tokenisasi, stopword removal, dan stemming agar dokumen berada dalam bentuk terstandardisasi sebelum diekstraksi fiturnya. \\
+
+    \hline
+    \textbf{FR3-Ekstraksi Fitur TF-IDF} 
+    & \textit{pipeline} harus mengubah teks yang sudah diproses menjadi representasi vektor TF-IDF dengan parameter yang terkontrol (token pattern, n-gram, max features) sehingga fitur yang dihasilkan seragam pada semua percobaan. \\
+
+    \hline
+    \textbf{FR4-Ekstraksi Fitur Sumber} 
+    & \textit{pipeline} harus mengubah atribut sumber berita menjadi fitur numerik melalui metode encoding yang tepat (misalnya one-hot encoding), serta memastikan bahwa fitur tersebut dapat digabungkan dengan vektor TF-IDF tanpa mengubah struktur data. \\
+
+    \hline
+    \textbf{FR5-Penyusunan Skenario Fitur} 
+    & \textit{pipeline} harus menyediakan dua konfigurasi fitur yang berbeda secara jelas: S1 (konten-saja) dan S2 (konten + sumber), dan memastikan bahwa kedua skenario diproses menggunakan tahapan yang identik kecuali pada komponennya yang ditambahkan. \\
+
+    \hline
+    \textbf{FR6-Pelatihan dan Pengujian Model} 
+    & \textit{pipeline} harus dapat melatih dan menguji tiga algoritma machine learning klasik , Naïve Bayes, SVM, dan Random Forest. Dengan menggunakan parameter dasar yang konsisten pada kedua skenario fitur, sehingga hasil perbandingan dapat dinilai secara objektif. \\
+
+    \hline
+    \textbf{FR7-Perhitungan Metrik Evaluasi} 
+    & \textit{pipeline} harus menghitung metrik evaluasi utama (\textit{accuracy, precision, recall, F1-score}) berdasarkan confusion matrix untuk setiap kombinasi model × skenario, dan menyimpannya dalam format yang dapat diolah lebih lanjut. \\
+
+    \hline
+    \textbf{FR8-Penyajian Output Komparasi} 
+    & \textit{pipeline} harus menyusun ringkasan kinerja model dalam bentuk tabel komparatif yang jelas, sehingga perbedaan performa antarmodel dan antar skenario fitur dapat dianalisis secara langsung. \\
+
+\end{longtable}

@@ -7,21 +7,50 @@
 \chapter{ANALISIS MASALAH}
 \label{chap:analisis-masalah}
 \section{Analisis Kondisi Saat Ini}
-Menurut \textcite{laudon2020}, gambarkan terlebih dahulu model konseptual sistem yang ada saat ini. Model konseptual ini berisi berbagai komponen atau subsitem dan interaksi antarsubsistem tersebut. Setelah itu, berikan penjelasan tentang masalah yang ada pada sistem tersebut. Paragraf berikut berisi contoh penjabaran masalah sistem informasi fasilitas kesehatan untuk pasien \autocite{pressman2019}. 
-\subsection{Anaslisis Alternatif Algoritma yang Digunakan}
-\lipsum[3]
-\subsection{Analisis Alternatif Solusi Sistem yang Ada}
-\lipsum[2]
-\section{Analisis Kebutuhan}
-\lipsum[4]
-\subsection{Identifikasi Masalah Pengguna}
-\lipsum[5]
-\subsection{Kebutuhan Fungsional}
-\lipsum[6]
-\subsection{Kebutuhan Nonfungsional}
-\lipsum[7]
-\section{Analisis Pemilihan Solusi}
-\subsection{Alternatif Solusi}
-\lipsum[8]
-\subsection{Analisis Penentuan Solusi}
-\lipsum[9]
+Penyebaran berita hoaks pada \textit{platform} berita daring di Indonesia menuntut adanya sistem deteksi otomatis yang mampu bekerja cepat dan konsisten. Kajian pada Bab \ref{chap:studi-literatur} menunjukkan bahwa berbagai penelitian sebelumnya telah menggunakan algoritma \textit{machine learning} klasik seperti Naive Bayes, SVM, dan Random Forest dengan fitur TF-IDF. Namun, hasil setiap studi masih sulit dibandingkan secara langsung karena perbedaan \textit{dataset}, tahap pengolahan teks, serta konfigurasi model. Hal ini membuat efektivitas relatif dari ketiga algoritma tersebut belum dapat disimpulkan secara terkontrol.
+
+Selain itu, seluruh penelitian terdahulu hanya memanfaatkan konten teks tanpa mengevaluasi kemungkinan kontribusi informasi sumber berita, seperti domain atau kategori media. Padahal, karakteristik sumber dapat menjadi indikator tambahan yang membantu model mengidentifikasi potensi hoaks. Ketiadaan evaluasi sistematis terhadap kedua aspek ini menimbulkan kebutuhan untuk merancang \textit{pipeline} Tugas Akhir yang memungkinkan perbandingan yang adil antar algoritma sekaligus menilai pengaruh fitur sumber.
+
+Dengan dasar tersebut, Bab \ref{chap:analisis-masalah} akan menjabarkan kebutuhan teknis dan desain \textit{pipeline} yang dirancang untuk menjawab dua pertanyaan inti: bagaimana memperoleh \textit{\textit{benchmark}} yang terstandarisasi untuk NB, SVM, dan RF, serta apakah penambahan fitur sumber mampu meningkatkan performa deteksi hoaks berbahasa Indonesia.
+
+\input table/tabel-permasalahan.tex
+
+
+\section{Analisis Kebutuhan dalam Implementasi \textit{pipeline} untuk Deteksi Hoaks}
+
+Setelah menganalisis permasalahan yang ada, menunjukkan bahwa masalah utama yang perlu diatasi adalah ketiadaan \textit{benchmark} terkontrol untuk membandingkan kinerja Naïve Bayes, SVM, dan Random Forest pada berita hoaks berbahasa Indonesia, serta belum adanya evaluasi yang eksplisit terhadap pengaruh fitur sumber berita. Agar kedua celah tersebut dapat dijawab secara sistematis, dibutuhkan sebuah \textit{pipeline} yang tidak hanya mampu menjalankan proses klasifikasi teks secara end-to-end, tetapi juga dirancang sejak awal untuk mendukung dua skenario fitur (berbasis konten saja dan berbasis konten ditambah sumber) dengan konfigurasi eksperimen yang replikabel.
+
+Secara konseptual, \textit{pipeline} yang dibutuhkan mengikuti alur umum pengolahan teks: memuat \textit{dataset} berita yang telah dilabeli, melakukan \textit{preprocessing} teks Bahasa Indonesia, membentuk representasi fitur (TF-IDF dan fitur sumber), kemudian melatih dan menguji beberapa model klasifikasi dengan metrik evaluasi yang konsisten. Di dalam alur tersebut, kebutuhan fungsional muncul dalam bentuk kemampuan sistem untuk mengelola data, memproses teks, menyusun skenario fitur, melatih model, dan menyajikan hasil komparasi. Di sisi lain, kebutuhan non-fungsional berkaitan dengan bagaimana \textit{pipeline} tersebut dapat dijalankan secara efisien, diulang dengan hasil yang konsisten, dan menghasilkan output yang mudah diinterpretasikan oleh peneliti maupun pembimbing.
+
+Ringkasan kebutuhan fungsional dan non-fungsional untuk \textit{pipeline} yang diusulkan ditunjukkan pada tabel berikut.
+
+\input table/tabel-kebutuhan-fungsional.tex
+
+\input table/tabel-kebutuhan-non_fungsional.tex
+
+
+\section{Analisis Pemilihan Pendekatan Deteksi Hoaks}
+
+Analisis kebutuhan yang dilakukan pada bagian sebelumnya menunjukkan bahwa pengembangan \textit{pipeline} deteksi hoaks membutuhkan pendekatan yang tidak hanya sesuai dengan ruang lingkup penelitian, tetapi juga relevan dengan temuan literatur dan realistis dari sisi sumber daya komputasi. Oleh karena itu, sebelum menentukan solusi, beberapa opsi pendekatan dievaluasi terlebih dahulu untuk melihat kesesuaiannya dengan permasalahan dan gap penelitian yang telah dirumuskan.
+
+\subsection{Alternatif Pendekatan Umum yang Dapat Digunakan}
+
+Secara umum, terdapat tiga kategori pendekatan yang sering digunakan dalam penelitian deteksi hoaks. Pendekatan berbasis Deep Learning atau Transformer, seperti IndoBERT, menawarkan performa tinggi dan kemampuan memahami konteks bahasa yang lebih kompleks, tetapi memerlukan \textit{dataset} besar dan perangkat GPU, sehingga tidak sesuai dengan batasan Tugas Akhir ini.
+
+Pendekatan kedua adalah metode \textit{machine learning} klasik berbasis konten dengan fitur TF-IDF, menggunakan algoritma seperti Naïve Bayes, SVM, dan Random Forest. Pendekatan ini banyak digunakan pada penelitian hoaks berbahasa Indonesia, efisien secara komputasi, dan mudah direplikasi, sehingga sering dijadikan baseline dalam studi komparatif.
+
+Pendekatan ketiga memperluas metode klasik dengan menambahkan metadata sederhana, seperti informasi sumber berita (misalnya domain atau jenis media). Penambahan fitur ini menawarkan kemungkinan untuk menangkap sinyal kredibilitas yang tidak terlihat pada teks murni, meskipun belum banyak diuji secara sistematis dalam penelitian terdahulu.
+
+Berikut tabel yang menunjukkan perbandingan pendekatan tersebut.
+
+\input table/tabel-perbandingan-pendekatan.tex
+
+\subsection{Pemilihan Pendekatan Deteksi Hoaks}
+
+Evaluasi terhadap ketiga pendekatan pada Tabel \ref{tbl:perbandingan-pendekatan} menunjukkan bahwa masing-masing memiliki implikasi metodologis dan operasional yang berbeda. Pendekatan berbasis \textit{deep learning}/\textit{transformer} secara teori menawarkan performa tertinggi, namun karakteristiknya tidak sejalan dengan ruang lingkup Tugas Akhir. Model seperti IndoBERT membutuhkan ukuran \textit{dataset} yang jauh lebih besar, proses \textit{fine-tuning} yang kompleks, serta komputasi menggunakan GPU yang membutuhkan spesifikasi yang memadai. Selain itu, pendekatan ini tidak memberikan kontribusi langsung terhadap gap penelitian yang diidentifikasi, karena fokus Tugas Akhir bukan pada pengembangan model mutakhir, melainkan pada komparasi terkontrol metode klasik.
+
+Pendekatan \textit{Machine Learning} klasik berbasis konten (TF-IDF saja) merupakan alternatif yang lebih realistis dan relevan karena telah digunakan secara konsisten dalam penelitian deteksi hoaks berbahasa Indonesia. Namun pendekatan ini hanya mengandalkan sinyal linguistik dan tidak mempertimbangkan atribut eksternal yang dapat berperan sebagai indikator kredibilitas berita. Berdasarkan sintesis pada Bab \ref{chap:studi-literatur}, kebanyakan penelitian sebelumnya menunjukkan kinerja yang stabil dengan TF-IDF, tetapi belum mengevaluasi kontribusi metadata, termasuk penggunaan \textit{source}. Dengan demikian, pendekatan ini hanya dapat berfungsi sebagai \textit{baseline}, bukan pendekatan utama untuk menjawab gap penelitian.
+
+Pendekatan ML klasik yang diperkaya dengan metadata, dalam konteks Tugas Akhir ini, fitur sumber berita menawarkan keseimbangan antara relevansi teoretis dan kelayakan implementasi. Penambahan fitur sumber tidak mengubah struktur metodologi secara drastis, tidak menambah kebutuhan komputasi berarti, dan tetap berada dalam batasan Tugas Akhir. Pada saat yang sama, pendekatan ini membuka peluang untuk mengkaji apakah informasi eksternal sederhana dapat meningkatkan performa model, sebuah aspek yang belum dievaluasi secara sistematis oleh penelitian terdahulu. Maka dari itu, pendekatan ini akan meneliti dua gap utama yang dijadikan objek eksplorasi : tidak adanya \textit{benchmark} NB-SVM-RF dan juga studi mengenai pengaruh fitur sumber terhadap klasifikasi hoaks berbahasa Indonesia.
+
+Berdasarkan pertimbangan tersebut, Tugas Akhir ini menetapkan pendekatan \textit{machine learning} klasik dengan dua konfigurasi fitur, yaitu \textit{content-only} dan \textit{content + source}, sebagai strategi yang paling tepat untuk menjawab permasalahan dan gap penelitian secara metodologis maupun operasional.

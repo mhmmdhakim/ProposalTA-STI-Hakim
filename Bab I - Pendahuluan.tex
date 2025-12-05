@@ -5,64 +5,83 @@
 \label{chap:pendahuluan}
 % --- Latar Belakang ---
 \section{Latar Belakang}
-\par Di era digital saat ini, informasi menjadi komoditas yang tidak hanya melimpah, tetapi juga berpengaruh besar dalam berbagai aspek kehidupan, mulai dari keputusan individu hingga kebijakan publik. Akses terhadap informasi memang semakin mudah, namun ironi muncul ketika kemudahan ini juga membuka ruang yang lebar bagi penyebaran informasi palsu atau hoaks. Misinformasi yang beredar melalui berbagai platform digital, terutama media sosial, telah menjadi ancaman nyata terhadap stabilitas sosial, kesehatan publik, bahkan integritas demokrasi \autocite{mahmud2022comparativeanalysisgraphneural}.
-\par Di Indonesia, penyebaran berita hoaks menjadi isu yang semakin kompleks, terlebih karena dinamika bahasa dan budaya lokal yang turut memengaruhi cara informasi dikemas dan disebarkan. Masyarakat dihadapkan pada tantangan untuk memverifikasi setiap informasi secara mandiri, yang pada gilirannya menciptakan kelelahan kognitif dan ketidakpercayaan terhadap media arus utama. Kondisi ini menjadikan kebutuhan akan solusi otomatis yang akurat dan efisien dalam mendeteksi hoaks menjadi sangat mendesak \autocite{triyono2023indonesian}.
-\par Seiring dengan berkembangnya teknologi, pendekatan berbasis kecerdasan buatan, khususnya machine learning (ML), telah terbukti efektif untuk tugas klasifikasi teks termasuk deteksi hoaks. Algoritma klasik seperti Naïve Bayes, Support Vector Machine (SVM), dan Random Forest banyak digunakan dalam penelitian terdahulu karena kemampuannya dalam mengenali pola linguistik dan statistika pada teks berita \autocite{matemilola2024development}. Studi oleh \textcite{triyono2023indonesian} menunjukkan bahwa SVM berhasil mencapai akurasi tertinggi 83,55\%, dibanding algoritma lain saat diuji pada dataset berita hoaks berbahasa Indonesia. Di sisi lain, algoritma Naïve Bayes juga menunjukkan kinerja yang menjanjikan dan efisien secara komputasi, terutama dalam bentuk variannya seperti Complement Naïve Bayes, yang berhasil mencapai akurasi sekitar 92\% dalam deteksi hoaks COVID-19 di media sosial \autocite{cahyono2024fast}.
-\par Namun, sebagian besar pendekatan yang digunakan masih berfokus pada analisis isi teks atau pendekatan \textit{content-based}, tanpa mempertimbangkan faktor tambahan seperti kredibilitas sumber berita, konteks sosial penyebaran, atau pola jaringan. Hal ini masih menjadi batasan utama dalam menciptakan sistem deteksi hoaks yang lebih adaptif dan kontekstual \autocite{emil2025review}. Meski pendekatan berbasis struktur jaringan seperti Graph Neural Networks (GNN) menunjukkan hasil sangat baik secara internasional, penerapannya dalam konteks lokal seperti Bahasa Indonesia masih jarang dieksplorasi \autocite{mahmud2022comparativeanalysisgraphneural}.
-\par Berdasarkan pertimbangan dan analisis tersebut, penelitian ini bertujuan untuk menganalisis kinerja algoritma \textit{machine learning} klasik—yakni Naïve Bayes, SVM, dan Random Forest—dalam mendeteksi berita hoaks berbahasa Indonesia dengan pendekatan berbasis isi teks. Fokus pada bahasa Indonesia penting untuk memahami sejauh mana efektivitas algoritma tersebut dapat dipertahankan atau ditingkatkan pada bahasa dengan struktur morfologis dan sintaktis yang berbeda dari bahasa Inggris. Hasil dari penelitian ini diharapkan dapat memberikan kontribusi empiris terhadap pengembangan sistem deteksi hoaks yang lebih relevan dengan konteks lokal sekaligus memperkuat ekosistem informasi digital yang sehat.
-%\par Oleh karena itu, penelitian ini diharapkan dapat menjadi langkah eksploratif dalam menganalisis kinerja algoritma Machine Learning klasik Naïve Bayes, SVM, dan Random Forest dalam mendeteksi hoaks berita berbahasa Indonesia. Hasilnya diharapkan memberikan pemahaman empiris mengenai sejauh mana pendekatan-pendekatan tersebut dapat dimanfaatkan dalam meningkatkan kualitas informasi di ekosistem digital nasional.
-% \begin{enumerate}
-% % \item	Kondisi atau situasi topik yang dibahas beserta permasalahannya, misalnya tentang pengelolaan informasi di puskesmas daerah pedesaan dan masalah yang dihadapi.
-% % \item	Berbagai solusi yang telah diterapkan atau solusi yang tersedia dan memungkinkan untuk diterapkan untuk menyelesaikan masalah tersebut.
-% \end{enumerate}
+
+Perkembangan teknologi digital saat ini telah mengubah cara masyarakat mencari, menerima, dan menyebarkan informasi yang ada. Setiap hari informasi beredar sangat cepat, karena akses yang semakin luas dan cepat inilah infromasi beredar dengan kecepatan yang tidak ter-\textit{filter}, Ini menghadirkan masalah serius berupa meningkatnya penyebaran misinformasi dan disinformasi. \textcite{alghamdi2024comprehensive} menunjukkan bahwa hoaks dapat menyebar lebih cepat dibandingkan informasi akurat karena dipengaruhi oleh perilaku pengguna, bias psikologis, hingga pola interaksi dalam ruang digital yang tertutup. Faktor-faktor tersebut memperkuat posisi hoaks sebagai ancaman nyata terhadap kualitas pemahaman publik dan proses pengambilan keputusan di masyarakat.
+
+Penelitian internasional oleh \textcite{emilremus2025} juga menggambarkan bahwa hoaks masa kini memiliki bentuk yang semakin kompleks, mulai dari permainan bahasa hingga penyalahgunaan konteks berita. Volume penyebarannya yang sangat besar membuat verifikasi manual tidak lagi memadai sehingga dibutuhkan dukungan teknologi yang mampu melakukan deteksi otomatis secara cepat dan konsisten. Dalam konteks ini, \textit{machine learning} menjadi salah satu pendekatan yang paling banyak digunakan karena mampu mengenali pola linguistik tertentu yang sering muncul pada konten hoaks.
+
+Kondisi tersebut semakin relevan ketika melihat situasi di Indonesia, di mana konsumsi informasi melalui media daring dan media sosial terus meningkat. Penyebaran hoaks dalam bahasa Indonesia telah dibuktikan oleh berbagai penelitian, salah satunya oleh \textcite{pratiwi2022hoax} yang mengidentifikasi masih banyaknya konten menyesatkan di media daring lokal. Penelitian mereka menggunakan algoritma Na\"{i}ve Bayes pada \textit{dataset} berita Indonesia dan mendapatkan akurasi sebesar 71\%, yang menunjukkan bahwa pendekatan berbasis \textit{machine learning} cukup efektif untuk mendukung deteksi awal hoaks pada konten berbahasa Indonesia \autocite{pratiwi2022hoax}. Temuan ini memperlihatkan bahwa kebutuhan terhadap metode otomatis bukan hanya relevan secara global, tetapi juga sangat mendesak dalam konteks lokal.
+
+Penelitian lainnya oleh \textcite{triyono2023indonesian} menunjukkan bahwa berbagai algoritma \textit{machine learning} telah diuji dalam mendeteksi hoaks Indonesia dan memberikan hasil yang beragam. Support Vector Machine (SVM) tercatat memiliki performa paling tinggi dengan akurasi 83,55\%, diikuti algoritma lain seperti Random Forest dan Logistic Regression yang menunjukkan kinerja cukup kompetitif meskipun tidak selalu konsisten dalam berbagai skenario data \autocite{triyono2023indonesian}. Meskipun demikian, sebagian besar penelitian tersebut masih fokus pada pendekatan berbasis isi teks. Pendekatan ini penting karena konten merupakan elemen utama dari sebuah berita, tetapi beragamnya gaya penulisan, struktur bahasa, serta variasi kosakata dalam bahasa Indonesia membuat evaluasi menyeluruh terhadap beberapa algoritma sekaligus menjadi sangat diperlukan.
+
+Berdasarkan perkembangan tersebut, Tugas Akhir ini diarahkan untuk menganalisis kinerja tiga algoritma \textit{machine learning} yang umum digunakan dalam deteksi hoaks, yaitu Na\"{i}ve Bayes, Support Vector Machine, dan Random Forest. Ketiga algoritma ini dipilih karena sering digunakan dalam penelitian sebelumnya dan memiliki karakteristik berbeda dalam memproses teks sehingga memungkinkan dilakukan perbandingan yang lebih komprehensif. Dengan menguji ketiganya pada \textit{dataset} berita berbahasa Indonesia, penelitian ini diharapkan dapat memberikan pemahaman yang lebih jelas mengenai efektivitas, kelebihan, dan keterbatasan masing-masing model ketika diterapkan pada konteks lokal.
+
+Hasil Tugas Akhir diharapkan dapat mendukung pengembangan sistem deteksi hoaks yang lebih akurat dan relevan untuk kebutuhan nasional, sekaligus memberikan kontribusi bagi upaya menjaga kualitas ekosistem informasi digital yang sehat dan dapat dipercaya.
 
 % --- Rumusan Masalah ---
 \section{Rumusan Masalah}
 Berdasarkan latar belakang yang telah dijelaskan , maka rumusan masalah dalam tugas akhir ini adalah sebagai berikut:
 \begin{enumerate}
-\item	Bagaimana merancang proses deteksi hoaks berita berbahasa Indonesia menggunakan pendekatan content-based, yang melibatkan tahapan \textit{preprocesssing}, \textit{feature extraction}, dan \textit{classification} dengan algoritma \textit{machine learning} klasik seperti Naïve Bayes, Support Vector Machine (SVM), dan Random Forest?
+\item	Bagaimana merancang proses deteksi hoaks berita berbahasa Indonesia menggunakan pendekatan content-based, yang melibatkan tahapan \textit{preprocessing}, \textit{feature extraction}, dan \textit{classification} dengan algoritma \textit{machine learning} klasik seperti Naïve Bayes, Support Vector Machine (SVM), dan Random Forest?
 \item	Bagaimana kinerja komparatif ketiga algoritma tersebut dalam mengklasifikasikan berita hoaks dan non-hoaks berdasarkan metrik kuantitatif seperti \textit{accuracy}, \textit{precision}, \textit{recall}, dan F1-score?
-\item	Bagaimana pengaruh penambahan fitur sumber berita (\textit{source-based features}) — seperti domain atau tipe sumber — terhadap performa model klasifikasi dibandingkan model berbasis \textit{content-only}?
-\item	Bagaimana merancang sistem deteksi yang replikabel dan efisien, sehingga dapat menjadi benchmark awal untuk penelitian lanjutan di bidang deteksi hoaks berbahasa Indonesia?
-\par Permasalahan di atas penting untuk dikaji karena belum tersedia studi komparatif yang sistematis mengenai performa algoritma \textit{machine learning} klasik dalam mendeteksi hoaks dalam bahasa Indonesia, khususnya dengan integrasi fitur berbasis konten dan sumber. Hasil dari penelitian ini diharapkan dapat memberikan dasar empiris bagi pengembangan sistem deteksi hoaks yang akurat dan adaptif dalam ekosistem digital nasional.
+\item	Bagaimana pengaruh penambahan fitur sumber berita (\textit{source-based features})—seperti domain atau tipe sumber—terhadap performa model klasifikasi dibandingkan model berbasis \textit{content-only}?
+\item	Bagaimana merancang model deteksi yang \textit{replicable} dan efisien, sehingga dapat menjadi \textit{benchmark} awal untuk penelitian lanjutan di bidang deteksi hoaks berbahasa Indonesia?
 \end{enumerate}
+\par Permasalahan di atas penting untuk dikaji karena belum tersedia studi komparatif yang sistematis mengenai performa algoritma \textit{machine learning} klasik dalam mendeteksi hoaks dalam bahasa Indonesia, khususnya dengan integrasi fitur berbasis konten dan sumber. Hasil dari penelitian ini diharapkan dapat memberikan dasar empiris bagi pengembangan sistem deteksi hoaks yang akurat dan adaptif dalam ekosistem digital nasional. 
 
 % --- Tujuan ---
 \section{Tujuan}
-Tujuan dari tugas akhir ini adalah untuk memberikan solusi terhadap permasalahan yang telah dirumuskan sebelumnya. Secara khusus, tujuan penelitian ini adalah sebagai berikut:
+Tujuan dari tugas akhir ini adalah untuk memberikan solusi terhadap permasalahan yang telah dirumuskan sebelumnya. Secara khusus, tujuan Tugas Akhir ini adalah sebagai berikut:
 \begin{enumerate}
-\item Merancang dan mengimplementasikan pipeline deteksi hoaks berita berbahasa Indonesia menggunakan pendekatan \textit{content-based} melalui tahapan \textit{preprocessing}, \textit{feature extraction} (TF-IDF), dan \textit{classification} dengan algoritma \textit{machine learning} klasik: Naïve Bayes, SVM, dan Random Forest.
+\item Merancang dan mengimplementasikan \textit{pipeline} deteksi hoaks berita berbahasa Indonesia menggunakan pendekatan \textit{content-based} melalui tahapan utama \textit{preprocessing}, \textit{feature extraction} (TF-IDF), dan \textit{classification} dengan algoritma \textit{machine learning} klasik: Naïve Bayes, SVM, dan Random Forest.
 \item Menganalisis dan membandingkan kinerja ketiga algoritma tersebut dalam mengklasifikasikan berita hoaks dan non-hoaks berdasarkan metrik kuantitatif, yaitu \textit{accuracy}, \textit{precision}, \textit{recall}, dan F1-score, untuk menentukan model dengan performa terbaik.
 \item Mengeksplorasi pengaruh penambahan fitur sumber berita sederhana (\textit{source-based features}), seperti domain situs atau jenis sumber berita, terhadap hasil klasifikasi, dan membandingkannya dengan model berbasis \textit{content-only}.
 \item Menyusun dokumentasi teknis dan hasil evaluasi model yang \textit{replicable}, mencakup konfigurasi algoritma, kombinasi fitur, serta parameter utama yang dapat dijadikan \textit{benchmark} untuk penelitian dan implementasi sistem deteksi hoaks di masa depan.
 \end{enumerate}
 % --- Batasan Masalah ---
-%\section{Batasan Masalah}
-%Tuliskan batasan-batasan yang diambil dalam pelaksanaan tugas akhir. Batasan ini dapat dihindari (bersifat opsional, tidak perlu ada) jika topik atau judul tugas akhir dibuat cukup spesifik.
-
+\section{Batasan Masalah}
+Batasan masalah dalam tugas akhir ini adalah sebagai berikut:
+\begin{enumerate}
+\item Tugas akhir berfokus pada deteksi hoaks berita berbahasa Indonesia yang bersumber dari \textit{platform} situs berita daring.
+\item Pendekatan yang digunakan adalah \textit{content-based}, dengan fokus pada analisis teks berita menggunakan tahapan utama \textit{preprocessing}, \textit{feature extraction} (TF-IDF), dan \textit{classification} menggunakan algoritma \textit{machine learning} klasik, yaitu ada Naïve Bayes, SVM, dan Random Forest.
+\item \textit{Dataset} yang digunakan adalah kumpulan berita hoaks dan non-hoaks yang telah tersedia secara publik, dengan pembagian data menjadi set pelatihan dan pengujian.
+\item Evaluasi kinerja model dilakukan menggunakan metrik kuantitatif: \textit{accuracy}, \textit{precision}, \textit{recall}, dan \textit{F1-score}.
+\item Tugas AKhir ini tidak mencakup pendekatan berbasis jaringan sosial atau metode \textit{deep learning} seperti Graph Neural Networks (GNN) atau Transformer.
+\item Penambahan fitur sumber berita (\textit{source-based features}) yang dieksplorasi terbatas pada atribut sederhana seperti domain situs atau jenis sumber berita.
+\end{enumerate}
 % --- Metodologi Pengerjaan TA ---
 \section{Metodologi}
-Penelitian ini akan menerapkan pendekatan \textit{Cross Industry Standard Process for Data Mining} (CRISP-DM) sebagai metodologi utama. CRISP-DM adalah kerangka proses yang umum digunakan dalam pengembangan sistem berbasis data mining, termasuk dalam aplikasi \textit{machine learning}. Kerangka ini bersifat fleksibel, iteratif, dan terdiri dari enam tahapan yang saling terintegrasi: (1) business understanding, (2) data understanding, (3) data preparation, (4) modeling, (5) evaluation, dan (6) deployment. Keenam tahapan ini digunakan untuk memastikan bahwa setiap proses dalam penelitian berjalan secara sistematis dan terarah, flow dari enam tahapan ini bisa dilihat dalam gambar \ref{gambar:crisp-dm}.
+Secara umum, Tugas Akhir ini menggunakan pendekatan \textit{machine learning} untuk menganalisis dan membandingkan performa tiga algoritma dalam mendeteksi hoaks berita berbahasa Indonesia. Agar penelitian berjalan secara terstruktur, alur kerja disusun mengikuti tahapan dasar yang lazim digunakan dalam studi klasifikasi teks pada penelitian sebelumnya. Tahapannya kurang lebih akan terdiri dari 5 tahapan utama seperti yang ditunjukkan pada Gambar \ref{gambar:methods}.
+Secara garis besar, metode Tugas Akhir ini meliputi langkah-langkah sebagai berikut.
 
-\begin{figure}[h] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
+\begin{figure}[h!] % pilihan opsi yang disarankan: t = top, b = bottom, h = here
 	\centering
   \captionsetup{justification=centering}
-    	\includegraphics[width=0.7\textwidth]{image/CRISP-DM metodology.png}
-	\caption{Diagram Proses Metodologi CRISP-DM}
-	\label{gambar:crisp-dm}
+    	\includegraphics[width=0.7\textwidth]{image/methods.png}
+	\caption{Mdoel Development Stages}
+	\label{gambar:methods}
 \end{figure}
 
 \begin{enumerate}
-\item Business Understanding
-\par Tahap ini bertujuan untuk memahami secara menyeluruh tujuan dan ruang lingkup permasalahan yang ingin diselesaikan. Peneliti melakukan identifikasi kebutuhan sistem, penetapan tujuan penelitian, serta formulasi permasalahan yang akan diselesaikan melalui pendekatan \textit{data mining}. Pemahaman konteks menjadi dasar penting untuk mengarahkan tahapan-tahapan selanjutnya.
-\item Data Understanding
-\par Tahap ini difokuskan pada eksplorasi awal terhadap data yang akan digunakan. Aktivitas meliputi pengumpulan \textit{dataset}, analisis struktur dan distribusi data, serta identifikasi potensi masalah kualitas data. Melalui tahap ini, peneliti memperoleh gambaran awal terhadap karakteristik data yang akan digunakan dalam proses pemodelan.
-\item Data Preparation
-\par Pada tahap ini, data disiapkan agar layak digunakan oleh model \textit{machine learning}. Prosesnya mencakup pembersihan data , transformasi format, seleksi fitur, dan rekayasa fitur (feature engineering). Tahapan ini sangat krusial karena kualitas input data sangat memengaruhi performa model yang akan dibangun.
-\item Modeling
-\par Tahapan ini mencakup pemilihan dan penerapan algoritma machine learning yang sesuai untuk menyelesaikan masalah yang telah dirumuskan. Data yang telah diproses akan digunakan untuk melatih model menggunakan teknik tertentu, seperti \textit{classification}, \textit{regression}, atau \textit{clustering}, tergantung pada tujuan. Pada tahap ini juga dilakukan penyesuaian parameter (tuning) untuk mendapatkan hasil yang optimal.
-\item Evaluation
-\par Setelah model dibangun, akan dievaluasi menggunakan metrik tertentu untuk mengukur performanya. Evaluasi dapat melibatkan pengujian \textit{accuracy}, \textit{precision}, \textit{recall}, dan F1-score, atau metrik lain yang relevan. Tahapan ini juga mencakup interpretasi hasil dan validasi terhadap data uji untuk memastikan bahwa model dapat digunakan secara dengan baik dan \textit{reliable}.
-\item Deployment
-\par Tahap akhir melibatkan implementasi atau dokumentasi hasil penelitian. Dalam konteks tugas akhir, \textit{deployment} lebih mengarah pada penyusunan dokumentasi teknis, pelaporan hasil eksperimen, serta penyimpanan konfigurasi sistem dan model agar dapat direplikasi atau dikembangkan lebih lanjut oleh peneliti lain.
+    \item \textbf{Pengumpulan \textit{Dataset}}  
+    
+	Tugas Akhir dimulai dengan menghimpun data berita hoaks dan non-hoaks dari sumber yang telah diverifikasi. Pendekatan ini mengikuti pola penelitian \textcite{pratiwi2022hoax} yang memanfaatkan data dari media daring dalam bahasa Indonesia untuk membangun model klasifikasi hoaks. Tahap pengumpulan data difokuskan pada memperoleh contoh teks yang mewakili penggunaan bahasa dalam konteks berita hoaks di Indonesia sehingga model memiliki dasar pembelajaran yang sesuai dengan kasus yang diteliti.\\
+
+    \item \textbf{\textit{Preprocessing} Teks}  
+    
+	Setelah \textit{dataset} terkumpul, teks diproses untuk menyeragamkan struktur dan menghilangkan elemen yang tidak relevan. Proses ini mencakup pembersihan dasar seperti normalisasi huruf, pemisahan kata, penghilangan kata umum, dan pengubahan kata menjadi bentuk dasarnya. Pendekatan yang sama digunakan dalam penelitian \textcite{sihombing2020article}, yang menekankan peran \textit{preprocessing} sebagai fondasi penting sebelum membangun model deteksi hoaks.\\
+
+    \item \textbf{Ekstraksi Fitur dengan TF-IDF}  
+    
+	Teks yang telah dibersihkan kemudian diubah menjadi representasi numerik menggunakan TF-IDF. Teknik ini banyak digunakan pada klasifikasi teks, termasuk klasifikasi hoaks bahasa Indonesia. \textcite{prasetyo2019evaluation} menunjukkan bahwa TF-IDF merupakan metode yang stabil dan efektif untuk mengekstraksi ciri tekstual pada berita hoaks.\\
+
+    \item \textbf{Pemodelan dengan Algoritma \textit{Machine Learning}}  
+    
+	Model dibangun menggunakan tiga algoritma, yaitu Na\"\i ve Bayes, Support Vector Machine, dan Random Forest. Ketiga metode ini dipilih karena sering digunakan pada penelitian deteksi hoaks Indonesia dan menunjukkan performa yang kompetitif pada berbagai studi, termasuk \textcite{triyono2023indonesian}.\\
+
+    \item \textbf{Evaluasi Kinerja Model}  
+    
+	Tahap akhir adalah mengukur performa model menggunakan metrik evaluasi klasifikasi untuk melihat kemampuan model dalam membedakan berita hoaks dan non-hoaks. Hasil evaluasi ini memberikan dasar objektif untuk menentukan model yang paling sesuai serta melihat potensi penerapan pendekatan berbasis konten dalam deteksi hoaks bahasa Indonesia.
 \end{enumerate}
+
+

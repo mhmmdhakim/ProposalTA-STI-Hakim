@@ -1,11 +1,32 @@
-% ==========================================
-% BAB V RENCANA SELANJUTNYA
-% ==========================================
+
 \chapter{RENCANA SELANJUTNYA}
 \label{chap:rencana-selanjutnya}
+
+\section{Rencana Implementasi}
+\subsection{Langkah Implementasi}
+Rencana implementasi pada Tugas Akhir ini disusun untuk menerjemahkan desain \textit{\textit{pipeline}} konseptual pada \ref{chap:desain-konsep-solusi} ke dalam langkah-langkah kerja yang terstruktur. Setiap tahap dirancang agar dapat direplikasi, mudah ditelusuri, dan menghasilkan artefak yang konsisten untuk proses evaluasi. Tabel \ref{tbl:rencana-implementasi} merangkum keseluruhan proses implementasi berdasarkan urutan waktu, lingkup kegiatan, serta keluaran yang diharapkan.
+
+\input table/tabel-rencana-implementasi.tex
+
+Melalui pembagian periode seperti pada Tabel \ref{tbl:rencana-implementasi}, alur implementasi menjadi lebih terarah dan terukur. Setiap tahap membangun fondasi bagi tahap berikutnya, sehingga proses pelatihan dan evaluasi model dapat berlangsung dengan stabil dan mengikuti \textit{pipeline} yang telah dirancang pada Bab IV.
+
 Jelaskan secara detail langkah-langkah rencana selanjutnya, hal-hal yang diperlukan atau akan disiapkan, dan risiko dan mitigasinya, yang meliputi:
-\begin{enumerate}
-\item	Rencana implementasi, termasuk alat dan bahan yang diperlukan, lingkungan, konfigurasi, biaya, dan sebagainya.
-\item	Desain pengujian dan evaluasi, misalnya metode verifikasi dan validasi.
-\item	Analisis risiko dan mitigasi, misalnya tindakan selanjutnya jika ada yang tidak berjalan sesuai rencana.
-\end{enumerate}
+
+\subsection{Alat, Lingkungan, dan Konfigurasi}
+Implementasi \textit{pipeline} membutuhkan seperangkat perangkat pendukung yang memastikan proses eksperimen berjalan efisien dan \textit{replicable}. Tabel \ref{tbl:alat-bahan} merangkum perangkat lunak, \textit{library}, serta konfigurasi teknis yang digunakan dalam Tugas Akhir.
+
+\input table/tabel-alat-bahan.tex
+
+\section{Desain Pengujian dan Evaluasi}
+
+Tahap pengujian dirancang untuk memverifikasi konsistensi implementasi \textit{pipeline} dan mengevaluasi performa model secara kuantitatif. Metode verifikasi memastikan seluruh modul bekerja sesuai desain, sementara metode evaluasi berfokus pada pembandingan performa model di berbagai skenario fitur. Ringkasannya disajikan pada Tabel \ref{tbl:pengujian-evaluasi}.
+
+\input table/tabel-pengujian-evaluasi.tex
+
+Desain pengujian ini memberikan struktur evaluasi yang objektif dan sejalan dengan penelitian terdahulu. Dengan menggunakan dua skenario fitur, \textit{pipeline} mampu menilai tidak hanya perbandingan antar algoritma, tetapi juga kontribusi fitur sumber terhadap peningkatan performa deteksi hoaks.
+
+\section{Analisis Risiko dan Mitigasi}
+
+Analisis risiko dilakukan untuk mengidentifikasi potensi hambatan yang dapat memengaruhi kelancaran Tugas Akhir, baik dari sisi data, model, maupun jadwal. Tabel \ref{tbl:risiko-mitigasi} menyajikan ringkasan risiko beserta langkah mitigasinya.
+
+\input table/tabel-risiko-mitigasi.tex

@@ -1,0 +1,79 @@
+\begin{longtable}{@{\extracolsep{\fill}} 
+    >{\raggedright\arraybackslash}p{0.5cm}
+    >{\raggedright\arraybackslash}p{2cm}
+    >{\raggedright\arraybackslash}p{5.5cm}
+    >{\raggedright\arraybackslash}p{4cm}}
+
+\caption{Spesifikasi Alat, Bahan, dan Konfigurasi}\label{tbl:alat-bahan} \\
+\toprule
+\textbf{No} & \textbf{Kategori} & \textbf{Alat/Bahan} & \textbf{Keterangan} \\
+\midrule
+\endfirsthead
+
+\caption[]{Spesifikasi Alat, Bahan, dan Konfigurasi}\\
+\toprule
+\textbf{No} & \textbf{Kategori} & \textbf{Alat/Bahan} & \textbf{Keterangan} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{4}{r}{\textit{Bersambung ke halaman berikutnya}} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+1
+& Perangkat Keras (Hardware)
+& Laptop dengan CPU Intel i5/i7 atau Ryzen setara, RAM $\geq$ 8 GB, SSD storage
+& Digunakan sebagai lingkungan eksekusi utama \textit{pipeline} ML klasik. \\
+\hline
+
+2
+& Sistem Operasi
+& Windows 10 / Linux Ubuntu 22.04 atau yang lebih baru
+& Menjadi \textit{runtime environment} untuk Python dan library terkait. \\
+\hline
+
+3
+& Bahasa Pemrograman
+& Python 3.x
+& Bahasa utama implementasi seluruh modul \textit{pipeline}. \\
+\hline
+
+4
+& Library Utama
+& scikit-learn, pandas, NumPy, Sastrawi, matplotlib
+& Mendukung preprocessing, TF--IDF, encoding, training model, dan evaluasi. \\
+\hline
+
+5
+& Tools Pengembangan
+& VS Code, Jupyter Notebook
+& Digunakan untuk eksplorasi, eksperimen, development, dan pencatatan hasil. \\
+\hline
+
+6
+& Manajemen Lingkungan
+& Anaconda / venv
+& Menjamin isolasi environment, kontrol dependency, dan reprodusibilitas. \\
+\hline
+
+7
+& Sumber Data
+& Berita hoaks (TurnBackHoax), berita non-hoaks dari media kredibel
+& Menjadi bahan utama untuk penyusunan dataset penelitian. \\
+\hline
+
+8
+& Konfigurasi Eksperimen
+& Random seed konsisten, batasan vocabulary TF--IDF, encoding sumber
+& Menjamin stabilitas replikasi hasil dan efisiensi komputasi. \\
+\hline
+
+9
+& Biaya
+& Library open-source; perangkat pribadi/kampus
+& Tidak memerlukan biaya lisensi tambahan. \\
+\hline
+\end{longtable}

@@ -1,0 +1,43 @@
+\begin{table}[h!]
+\centering
+\begin{tabular}{| p{0.20\textwidth} | p{0.50\textwidth} | p{0.30\textwidth} |}
+\hline
+\textbf{Tahap} 
+& \textbf{Deskripsi} 
+& \textbf{Tujuan} \\
+\hline
+
+Verifikasi Implementasi
+& Menguji modul \textit{preprocessing}, TF-IDF, \textit{encoding}, \textit{training}, dan evaluasi pada subset kecil data. Menganalisis sampel jalur input-output secara manual.
+& Memastikan \textit{pipeline} berjalan lancar dan sesuai desain. \\
+\hline
+
+Pembagian Data
+& \textit{Train-test split} atau \textit{k-fold cross validation} dengan proporsi kelas yang seimbang.
+& Membentuk basis evaluasi yang valid dan terkontrol. \\
+\hline
+
+Eksperimen per Model
+& Melatih NB, SVM, dan RF pada skenario S1 dan S2. Mencatat metrik kinerja dan \textit{confusion matrix}.
+& Membandingkan model pada skenario fitur yang berbeda. \\
+\hline
+
+Evaluasi Performa
+& Menghitung \textit{accuracy}, \textit{precision}, \textit{recall}, dan \textit{F1-score}. Melakukan analisis \textit{trade-off} kesalahan model.
+& Menilai kualitas prediksi secara komprehensif. \\
+\hline
+
+Penentuan Model Terbaik
+& Menetapkan \textit{F1-score} sebagai metrik utama. \textit{Precision} dan \textit{recall} dianalisis untuk memahami risiko kesalahan.
+& Mengidentifikasi model yang paling efektif. \\
+\hline
+
+Validasi Hasil
+& Mengulangi eksperimen dengan \textit{seed} berbeda atau membandingkan pola hasil dengan literatur.
+& Menjamin hasil stabil dan dapat dipercaya. \\
+\hline
+
+\end{tabular}
+\caption{Tahapan Pengujian dan Evaluasi \textit{pipeline} Deteksi Hoaks}
+\label{tbl:pengujian-evaluasi}
+\end{table}
