@@ -19,7 +19,6 @@
 *.toc
 
 # --- PDF hasil kompilasi ---
-*.pdf
 
 # --- File output sementara dari editor ---
 *.tmp
